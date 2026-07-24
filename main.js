@@ -1,16 +1,24 @@
-fetch('data.json')
+fetch('https://dummyjson.com/products')
     .then((res) => res.json())
     .then((data) => {
         let user = ""
 
-        data.forEach((u) => {
+        data.products.forEach((u) => {
             user += `
-                <h2>ID : ${u.id} </h2>
-                <h2>NAME : ${u.name} </h2>
-                <h2>AGE : ${u.age} </h2>
+            
+                <div class="card">
+                    <div class="img">
+                        <img src="${u.images[0]}" alt="">
+                    </div>
+                <div class="content">
+                    <h3>${u.id}</h3>
+                    <h3>${u.title}</h3>
+                    <h5>price:- ${u.price}</h5>
+                </div>
+                </div>
             `
-            document.getElementById("data").innerHTML = user
         });
+        document.getElementById("data").innerHTML = user
     })
 
 
